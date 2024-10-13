@@ -20,7 +20,7 @@
     </tr>
     </thead>
     <tbody *ngIf="products.length>0; else tableTemplate" class="table-group-divider">
-    <tr *ngFor="let product of getproducts()">
+    <tr *ngFor="let product of getProducts()">
       <td><img [src]="product.logo" alt="logo"></td>
       <td>{{ product.name }}</td>
       <td>{{ product.description }}</td>
@@ -54,7 +54,7 @@
   <div class="row">
     <div class="col">
       <strong>
-        {{ getproducts().length }}
+        {{ getProducts().length }}
         <label *ngIf="products.length==1; else labelTemplate">
           Resultado
         </label>

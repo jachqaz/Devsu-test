@@ -28,82 +28,13 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private productService: ProductService) {
   }
-
   ngOnInit(): void {
-    var product: Product;
-    product = new Product();
-    product.id = "111";
-    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
-    product.name = "B";
-    product.description = "description";
-    product.releaseDate = "2001-01-01";
-    product.restructuringDate = "2001-01-01";
-    this.products.push(product);
-    product = new Product();
-    product.id = "111";
-    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
-    product.name = "BA";
-    product.description = "description";
-    product.releaseDate = "2001-01-01";
-    product.restructuringDate = "2001-01-01";
-    this.products.push(product);
-    product = new Product();
-    product.id = "111";
-    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
-    product.name = "BAN";
-    product.description = "description";
-    product.releaseDate = "2001-01-01";
-    product.restructuringDate = "2001-01-01";
-    this.products.push(product);
-    product = new Product();
-    product.id = "111";
-    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
-    product.name = "BANC";
-    product.description = "description";
-    product.releaseDate = "2001-01-01";
-    product.restructuringDate = "2001-01-01";
-    this.products.push(product);
-    product = new Product();
-    product.id = "111";
-    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
-    product.name = "BANCO";
-    product.description = "description";
-    product.releaseDate = "2001-01-01";
-    product.restructuringDate = "2001-01-01";
-    this.products.push(product);
-    product = new Product();
-    product.id = "111";
-    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
-    product.name = "BANCOJ";
-    product.description = "description";
-    product.releaseDate = "2001-01-01";
-    product.restructuringDate = "2001-01-01";
-    this.products.push(product);
-    product.id = "111";
-    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
-    product.name = "name";
-    product.description = "description";
-    product.releaseDate = "2001-01-01";
-    product.restructuringDate = "2001-01-01";
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
-    this.products.push(product);
+    this.productService.getProducts().then((products) => {
+      this.products = products.data;
+    }).catch(error => {
+      console.error(error)
+      alert(error.message);
+    });
   }
 
   modify(product: Product) {
@@ -115,7 +46,10 @@ export class HomeComponent implements OnInit {
 
   }
 
-  getproducts() {
+  getProducts() {
+    if (this.products.length == 0) {
+      return [];
+    }
     this.productsPage = this.products.filter(product => product.name.includes(this.search));
     if (this.totalResults != 0) {
       this.productsPage = this.productsPage.slice(0, this.totalResults);

@@ -14,13 +14,16 @@
         <div *ngIf="productForm.get('id')!.invalid && productForm.get('id')!.dirty || productForm.get('id')!.touched"
              class="alert alert-danger">
           <div *ngIf="productForm.get('id')!.hasError('required')">
-            ID no valido!
+            Este campo es requerido
           </div>
           <div *ngIf="productForm.get('id')!.hasError('minlength')">
             ID mínimo 3 caracteres.
           </div>
           <div *ngIf="productForm.get('id')!.hasError('maxlength')">
             ID máximo 10 caracteres.
+          </div>
+          <div *ngIf="productForm.get('id')!.hasError('idDuplicate')">
+            ID no valido!
           </div>
         </div>
       </div>
@@ -86,7 +89,7 @@
           <div *ngIf="productForm.get('releaseDate')!.hasError('required')">
             Este campo es requerido
           </div>
-          <div *ngIf="productForm.get('releaseDate')?.hasError('releaseDateInvalid')">
+          <div *ngIf="productForm.get('releaseDate')!.hasError('releaseDateInvalid')">
             La fecha de lanzamiento debe ser igual o posterior a la fecha actual.
           </div>
         </div>
@@ -101,7 +104,7 @@
           <div *ngIf="productForm.get('restructuringDate')!.hasError('required')">
             Este campo es requerido
           </div>
-          <div *ngIf="productForm.get('restructuringDate')?.hasError('restructuringDateInvalid')">
+          <div *ngIf="productForm.get('restructuringDate')!.hasError('restructuringDateInvalid')">
             Requerido, la Fecha debe ser exactamente un año posterior a la fecha de liberación
           </div>
         </div>

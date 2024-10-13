@@ -45,8 +45,30 @@ export class ProductComponent implements OnInit {
   }
 
   send() {
-    console.log(this.product)
-    // this.router.navigate([Paths.home]);
+    if (this.isModifyMode) {
+      this.productService.putProducts(this.product).then(() => {
+        this.router.navigate([Paths.home])
+      }).catch(error => {
+        console.error(error)
+        alert(error.message);
+      });
+    } else {
+      this.productService.getIdVerification(this.product.id).then((value: boolean) => {
+        if (value) {
+          this.productForm.get('id')?.setErrors({idDuplicate: true});
+        } else {
+          this.productService.postProducts(this.product).then(() => {
+            this.router.navigate([Paths.home])
+          }).catch(error => {
+            console.error(error)
+            alert(error.message);
+          });
+        }
+      }).catch(error => {
+        console.error(error)
+        alert(error.message);
+      });
+    }
   }
 
   initFormGroup() {
