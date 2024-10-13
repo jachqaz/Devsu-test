@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     var account: Account;
     account = new Account();
-    account.id = "1";
+    account.id = "111";
     account.logo = "JG";
     account.name = "B";
     account.description = "description";
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
     account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
-    account.id = "1";
+    account.id = "111";
     account.logo = "JG";
     account.name = "BA";
     account.description = "description";
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
     account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
-    account.id = "1";
+    account.id = "111";
     account.logo = "JG";
     account.name = "BAN";
     account.description = "description";
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
     account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
-    account.id = "1";
+    account.id = "111";
     account.logo = "JG";
     account.name = "BANC";
     account.description = "description";
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
     account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
-    account.id = "1";
+    account.id = "111";
     account.logo = "JG";
     account.name = "BANCO";
     account.description = "description";
@@ -72,14 +72,14 @@ export class HomeComponent implements OnInit {
     account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
-    account.id = "1";
+    account.id = "111";
     account.logo = "JG";
     account.name = "BANCOJ";
     account.description = "description";
     account.releaseDate = "2001-01-01";
     account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
-    account.id = "1";
+    account.id = "111";
     account.logo = "JG";
     account.name = "name";
     account.description = "description";
@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
 
   modify(account: Account) {
     this.accountService.account = account;
-    this.goToAccount();
+    this.router.navigate([Paths.modifyAccount]);
   }
 
   delete(account: Account) {
@@ -128,10 +128,7 @@ export class HomeComponent implements OnInit {
 
   add() {
     this.accountService.account = new Account();
-    this.goToAccount();
+    this.router.navigate([Paths.accountCreate]);
   }
 
-  goToAccount() {
-    this.router.navigate([Paths.account]);
-  }
 }

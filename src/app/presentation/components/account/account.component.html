@@ -8,22 +8,37 @@
     <div class="row">
       <div class="col form-group">
         <label class="form-label" for="id">ID</label>
-        <input [(ngModel)]="account.id" class="form-control" formControlName="id" id="id" required type="text">
-        <div *ngIf="accountForm.get('id')!.invalid && (accountForm.get('id')!.dirty || accountForm.get('id')!.touched)"
+        <input [(ngModel)]="account.id" [readOnly]="isModifyMode" class="form-control" formControlName="id" id="id"
+               maxlength="10" minlength="3"
+               required type="text">
+        <div *ngIf="accountForm.get('id')!.invalid && accountForm.get('id')!.dirty || accountForm.get('id')!.touched"
              class="alert alert-danger">
           <div *ngIf="accountForm.get('id')!.hasError('required')">
-            Este campo es requerido
+            ID no valido!
+          </div>
+          <div *ngIf="accountForm.get('id')!.hasError('minlength')">
+            ID mínimo 3 caracteres.
+          </div>
+          <div *ngIf="accountForm.get('id')!.hasError('maxlength')">
+            ID máximo 10 caracteres.
           </div>
         </div>
       </div>
       <div class="col form-group">
         <label class="form-label" for="name">Nombre</label>
-        <input [(ngModel)]="account.name" class="form-control" formControlName="name" id="name" required type="text">
+        <input [(ngModel)]="account.name" class="form-control" formControlName="name" id="name" maxlength="100"
+               minlength="5" required type="text">
         <div
           *ngIf="accountForm.get('name')!.invalid && (accountForm.get('name')!.dirty || accountForm.get('name')!.touched)"
           class="alert alert-danger">
           <div *ngIf="accountForm.get('name')!.hasError('required')">
             Este campo es requerido
+          </div>
+          <div *ngIf="accountForm.get('name')!.hasError('minlength')">
+            Nombre mínimo 5 caracteres.
+          </div>
+          <div *ngIf="accountForm.get('name')!.hasError('maxlength')">
+            Nombre máximo 100 caracteres.
           </div>
         </div>
       </div>
@@ -32,12 +47,19 @@
       <div class="col form-group">
         <label class="form-label" for="description">Descripción</label>
         <input [(ngModel)]="account.description" class="form-control" formControlName="description" id="description"
+               maxlength="200" minlength="10"
                required type="text">
         <div
           *ngIf="accountForm.get('description')!.invalid && (accountForm.get('description')!.dirty || accountForm.get('description')!.touched)"
           class="alert alert-danger">
           <div *ngIf="accountForm.get('description')!.hasError('required')">
             Este campo es requerido
+          </div>
+          <div *ngIf="accountForm.get('description')!.hasError('minlength')">
+            Descripción mínimo 10 caracteres.
+          </div>
+          <div *ngIf="accountForm.get('description')!.hasError('maxlength')">
+            Descripción máximo 200 caracteres.
           </div>
         </div>
       </div>
@@ -64,6 +86,9 @@
           <div *ngIf="accountForm.get('releaseDate')!.hasError('required')">
             Este campo es requerido
           </div>
+          <div *ngIf="accountForm.get('releaseDate')?.hasError('releaseDateInvalid')">
+            La fecha de lanzamiento debe ser igual o posterior a la fecha actual.
+          </div>
         </div>
       </div>
       <div class="col form-group">
@@ -75,6 +100,9 @@
           class="alert alert-danger">
           <div *ngIf="accountForm.get('restructuringDate')!.hasError('required')">
             Este campo es requerido
+          </div>
+          <div *ngIf="accountForm.get('restructuringDate')?.hasError('restructuringDateInvalid')">
+            Requerido, la Fecha debe ser exactamente un año posterior a la fecha de liberación
           </div>
         </div>
       </div>
