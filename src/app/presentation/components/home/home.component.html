@@ -2,12 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <input [(ngModel)]="search" placeholder="Search..." type="text">
+      <input [(ngModel)]="search" class="inputStyle" placeholder="Search..." type="text">
     </div>
     <div class="col textRight ">
-      <button class="buttonYellow">Agregar</button>
+      <button (click)="add()" class="button buttonYellow">Agregar</button>
     </div>
-
   </div>
   <table class="table table-striped table-hover ">
     <thead>
@@ -54,16 +53,18 @@
 
   <div class="row">
     <div class="col">
-      {{ getAccounts().length }}
-      <label *ngIf="accounts.length==1; else labelTemplate">
-        Resultado
-      </label>
-      <ng-template #labelTemplate>
-        Resultados
-      </ng-template>
+      <strong>
+        {{ getAccounts().length }}
+        <label *ngIf="accounts.length==1; else labelTemplate">
+          Resultado
+        </label>
+        <ng-template #labelTemplate>
+          Resultados
+        </ng-template>
+      </strong>
     </div>
     <div class="col textRight">
-      <select [(ngModel)]="totalResults">
+      <select [(ngModel)]="totalResults" class="selectStyle">
         <option [value]="0">All</option>
         <option *ngIf="accounts.length>=5" [value]="5">5</option>
         <option *ngIf="accounts.length>=10" [value]="10">10</option>

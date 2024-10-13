@@ -1,0 +1,50 @@
+.container {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.linea {
+  height: 1px;
+  background-color: black;
+}
+
+.buttonReset {
+  margin-right: 10%;
+  background-color: #f0f0f0;
+  color: #5c7cfa;
+}
+
+.buttonSend {
+  margin-left: 10%;
+
+  background-color: #ffffcc;
+  color: #5c7cfa;
+}
+
+.row {
+  margin-top: 3%;
+}
+
+.col {
+  margin-right: 5%;
+}
+
+.alert div {
+  background-color: #fed3d3;
+  color: #820000;
+  padding: 2%;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+select {
+  width: 100%;
+  padding: .5rem;
+}

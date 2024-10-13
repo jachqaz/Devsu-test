@@ -3,6 +3,9 @@ import {HeaderComponent} from '../../common/header/header.component';
 import {Account} from '../../../domain/models/account';
 import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Paths} from '../../app.routes';
+import {AccountService} from '../../../data/services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +26,9 @@ export class HomeComponent implements OnInit {
   accountsPage: Account[] = [];
   search: string = '';
 
+  constructor(private router: Router, private accountService: AccountService) {
+  }
+
   ngOnInit(): void {
     var account: Account;
     account = new Account();
@@ -30,55 +36,55 @@ export class HomeComponent implements OnInit {
     account.logo = "JG";
     account.name = "B";
     account.description = "description";
-    account.releaseDate = "01/01/2000";
-    account.restructuringDate = "01/01/2001";
+    account.releaseDate = "2001-01-01";
+    account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
     account.id = "1";
     account.logo = "JG";
     account.name = "BA";
     account.description = "description";
-    account.releaseDate = "01/01/2000";
-    account.restructuringDate = "01/01/2001";
+    account.releaseDate = "2001-01-01";
+    account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
     account.id = "1";
     account.logo = "JG";
     account.name = "BAN";
     account.description = "description";
-    account.releaseDate = "01/01/2000";
-    account.restructuringDate = "01/01/2001";
+    account.releaseDate = "2001-01-01";
+    account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
     account.id = "1";
     account.logo = "JG";
     account.name = "BANC";
     account.description = "description";
-    account.releaseDate = "01/01/2000";
-    account.restructuringDate = "01/01/2001";
+    account.releaseDate = "2001-01-01";
+    account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
     account.id = "1";
     account.logo = "JG";
     account.name = "BANCO";
     account.description = "description";
-    account.releaseDate = "01/01/2000";
-    account.restructuringDate = "01/01/2001";
+    account.releaseDate = "2001-01-01";
+    account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account = new Account();
     account.id = "1";
     account.logo = "JG";
     account.name = "BANCOJ";
     account.description = "description";
-    account.releaseDate = "01/01/2000";
-    account.restructuringDate = "01/01/2001";
+    account.releaseDate = "2001-01-01";
+    account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     account.id = "1";
     account.logo = "JG";
     account.name = "name";
     account.description = "description";
-    account.releaseDate = "01/01/2000";
-    account.restructuringDate = "01/01/2001";
+    account.releaseDate = "2001-01-01";
+    account.restructuringDate = "2001-01-01";
     this.accounts.push(account);
     this.accounts.push(account);
     this.accounts.push(account);
@@ -101,7 +107,8 @@ export class HomeComponent implements OnInit {
   }
 
   modify(account: Account) {
-
+    this.accountService.account = account;
+    this.goToAccount();
   }
 
   delete(account: Account) {
@@ -119,4 +126,12 @@ export class HomeComponent implements OnInit {
     return this.accounts;
   }
 
+  add() {
+    this.accountService.account = new Account();
+    this.goToAccount();
+  }
+
+  goToAccount() {
+    this.router.navigate([Paths.account]);
+  }
 }

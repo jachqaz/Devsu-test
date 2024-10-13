@@ -1,1 +1,91 @@
-<p>account works!</p>
+<headerComponent></headerComponent>
+<div class="container">
+  <div class="row textCenter">
+    <h1>Formulario de Registro</h1>
+    <div class="linea"></div>
+  </div>
+  <form (ngSubmit)="send()" [formGroup]="accountForm">
+    <div class="row">
+      <div class="col form-group">
+        <label class="form-label" for="id">ID</label>
+        <input [(ngModel)]="account.id" class="form-control" formControlName="id" id="id" required type="text">
+        <div *ngIf="accountForm.get('id')!.invalid && (accountForm.get('id')!.dirty || accountForm.get('id')!.touched)"
+             class="alert alert-danger">
+          <div *ngIf="accountForm.get('id')!.hasError('required')">
+            Este campo es requerido
+          </div>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label class="form-label" for="name">Nombre</label>
+        <input [(ngModel)]="account.name" class="form-control" formControlName="name" id="name" required type="text">
+        <div
+          *ngIf="accountForm.get('name')!.invalid && (accountForm.get('name')!.dirty || accountForm.get('name')!.touched)"
+          class="alert alert-danger">
+          <div *ngIf="accountForm.get('name')!.hasError('required')">
+            Este campo es requerido
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label class="form-label" for="description">Descripción</label>
+        <input [(ngModel)]="account.description" class="form-control" formControlName="description" id="description"
+               required type="text">
+        <div
+          *ngIf="accountForm.get('description')!.invalid && (accountForm.get('description')!.dirty || accountForm.get('description')!.touched)"
+          class="alert alert-danger">
+          <div *ngIf="accountForm.get('description')!.hasError('required')">
+            Este campo es requerido
+          </div>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label class="form-label" for="logo">Logo</label>
+        <input [(ngModel)]="account.logo" class="form-control" formControlName="logo" id="logo" required type="text">
+        <div
+          *ngIf="accountForm.get('logo')!.invalid && (accountForm.get('logo')!.dirty || accountForm.get('logo')!.touched)"
+          class="alert alert-danger">
+          <div *ngIf="accountForm.get('logo')!.hasError('required')">
+            Este campo es requerido
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <label class="form-label" for="releaseDate">Fecha Liberación</label>
+        <input [(ngModel)]="account.releaseDate" class="form-control" formControlName="releaseDate" id="releaseDate"
+               required type="date">
+        <div
+          *ngIf="accountForm.get('releaseDate')!.invalid && (accountForm.get('releaseDate')!.dirty || accountForm.get('releaseDate')!.touched)"
+          class="alert alert-danger">
+          <div *ngIf="accountForm.get('releaseDate')!.hasError('required')">
+            Este campo es requerido
+          </div>
+        </div>
+      </div>
+      <div class="col form-group">
+        <label class="form-label" for="restructuringDate">Fecha Revisión</label>
+        <input [(ngModel)]="account.restructuringDate" class="form-control" formControlName="restructuringDate"
+               id="restructuringDate" required type="date">
+        <div
+          *ngIf="accountForm.get('restructuringDate')!.invalid && (accountForm.get('restructuringDate')!.dirty || accountForm.get('restructuringDate')!.touched)"
+          class="alert alert-danger">
+          <div *ngIf="accountForm.get('restructuringDate')!.hasError('required')">
+            Este campo es requerido
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col textRight">
+        <button (click)="reset()" class="button buttonReset" type="button">Reiniciar</button>
+      </div>
+      <div class="col">
+        <button [disabled]="!accountForm.valid" class="button buttonSend" type="submit">Enviar</button>
+      </div>
+    </div>
+  </form>
+</div>
