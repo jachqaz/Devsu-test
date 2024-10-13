@@ -8,7 +8,7 @@
       <button (click)="add()" class="button buttonYellow">Agregar</button>
     </div>
   </div>
-  <table class="table table-striped table-hover ">
+  <table class="table table-striped table-hover table-bordered">
     <thead>
     <tr>
       <th>Logo</th>
@@ -19,20 +19,20 @@
       <th colspan="2">Acción</th>
     </tr>
     </thead>
-    <tbody *ngIf="accounts.length>0; else tableTemplate" class="table-group-divider">
-    <tr *ngFor="let account of getAccounts()">
-      <td>{{ account.logo }}</td>
-      <td>{{ account.name }}</td>
-      <td>{{ account.description }}</td>
-      <td>{{ account.releaseDate }}</td>
-      <td>{{ account.restructuringDate }}</td>
+    <tbody *ngIf="products.length>0; else tableTemplate" class="table-group-divider">
+    <tr *ngFor="let product of getproducts()">
+      <td><img [src]="product.logo" alt="logo"></td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.releaseDate }}</td>
+      <td>{{ product.restructuringDate }}</td>
       <td>
-        <button (click)="modify(account)">
+        <button (click)="modify(product)">
           Modificar
         </button>
       </td>
       <td>
-        <button (click)="delete(account)">
+        <button (click)="delete(product)">
           Eliminar
         </button>
       </td>
@@ -54,8 +54,8 @@
   <div class="row">
     <div class="col">
       <strong>
-        {{ getAccounts().length }}
-        <label *ngIf="accounts.length==1; else labelTemplate">
+        {{ getproducts().length }}
+        <label *ngIf="products.length==1; else labelTemplate">
           Resultado
         </label>
         <ng-template #labelTemplate>
@@ -66,9 +66,9 @@
     <div class="col textRight">
       <select [(ngModel)]="totalResults" class="selectStyle">
         <option [value]="0">All</option>
-        <option *ngIf="accounts.length>=5" [value]="5">5</option>
-        <option *ngIf="accounts.length>=10" [value]="10">10</option>
-        <option *ngIf="accounts.length>=20" [value]="20">20</option>
+        <option *ngIf="products.length>=5" [value]="5">5</option>
+        <option *ngIf="products.length>=10" [value]="10">10</option>
+        <option *ngIf="products.length>=20" [value]="20">20</option>
       </select>
     </div>
   </div>

@@ -2,8 +2,8 @@ import {Routes} from '@angular/router';
 
 export class Paths {
   static readonly home = 'home';
-  static readonly accountCreate = 'account/create';
-  static readonly modifyAccount = 'account/modify';
+  static readonly productCreate = 'product/create';
+  static readonly productModify = 'product/modify';
 }
 
 export const routes: Routes = [
@@ -19,17 +19,17 @@ export const routes: Routes = [
 
   },
   {
-    path: Paths.accountCreate,
+    path: Paths.productCreate,
     loadComponent: () =>
-      import('./components/account/account.component').then(mod => mod.AccountComponent),
+      import('./components/product/product.component').then(mod => mod.ProductComponent),
     data: {
       isModifyMode: false
     }
   },
   {
-    path: Paths.modifyAccount,
+    path: Paths.productModify,
     loadComponent: () =>
-      import('./components/account/account.component').then(mod => mod.AccountComponent),
+      import('./components/product/product.component').then(mod => mod.ProductComponent),
     data: {
       isModifyMode: true
     }

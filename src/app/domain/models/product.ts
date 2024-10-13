@@ -1,4 +1,4 @@
-export class Account {
+export class Product {
   id: string = "";
   logo: string = "";
   name: string = "";

@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from '../../common/header/header.component';
-import {AccountService} from '../../../data/services/account.service';
-import {Account} from '../../../domain/models/account';
+import {ProductService} from '../../../data/services/product.service';
+import {Product} from '../../../domain/models/product';
 import {AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Paths} from '../../app.routes';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgIf} from '@angular/common';
 
 @Component({
-  selector: 'app-account',
+  selector: 'app-product',
   standalone: true,
   imports: [
     HeaderComponent,
@@ -16,42 +16,42 @@ import {NgIf} from '@angular/common';
     ReactiveFormsModule,
     NgIf
   ],
-  templateUrl: './account.component.html',
-  styleUrl: './account.component.css'
+  templateUrl: './product.component.html',
+  styleUrl: './product.component.css'
 })
-export class AccountComponent implements OnInit {
+export class ProductComponent implements OnInit {
   isModifyMode: boolean = false;
-  account: Account = new Account();
-  accountForm: FormGroup = this.initFormGroup();
+  product: Product = new Product();
+  productForm: FormGroup = this.initFormGroup();
 
-  constructor(private router: Router, private route: ActivatedRoute, private accountService: AccountService) {
-    this.account = this.accountService.account;
+  constructor(private router: Router, private route: ActivatedRoute, private productService: ProductService) {
+    this.product = this.productService.product;
   }
 
   ngOnInit(): void {
     this.isModifyMode = this.route.snapshot.data['isModifyMode'];
-    if (this.isModifyMode && this.account.id == "") {
+    if (this.isModifyMode && this.product.id == "") {
       this.router.navigate([Paths.home]);
     }
   }
 
   reset() {
     if (this.isModifyMode) {
-      this.account = this.accountService.account;
+      this.product = this.productService.product;
     } else {
-      this.account = new Account();
+      this.product = new Product();
     }
-    this.accountForm = this.initFormGroup();
+    this.productForm = this.initFormGroup();
   }
 
   send() {
-    console.log(this.account)
+    console.log(this.product)
     // this.router.navigate([Paths.home]);
   }
 
   initFormGroup() {
     return new FormGroup({
-      id: new FormControl(this.isModifyMode ? this.account.id : ''),
+      id: new FormControl(this.isModifyMode ? this.product.id : ''),
       logo: new FormControl(''),
       name: new FormControl(''),
       description: new FormControl(''),

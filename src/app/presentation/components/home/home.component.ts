@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {HeaderComponent} from '../../common/header/header.component';
-import {Account} from '../../../domain/models/account';
+import {Product} from '../../../domain/models/product';
 import {NgForOf, NgIf} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Paths} from '../../app.routes';
-import {AccountService} from '../../../data/services/account.service';
+import {ProductService} from '../../../data/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -22,113 +22,113 @@ import {AccountService} from '../../../data/services/account.service';
 })
 export class HomeComponent implements OnInit {
   totalResults: number = 0;
-  accounts: Account[] = [];
-  accountsPage: Account[] = [];
+  products: Product[] = [];
+  productsPage: Product[] = [];
   search: string = '';
 
-  constructor(private router: Router, private accountService: AccountService) {
+  constructor(private router: Router, private productService: ProductService) {
   }
 
   ngOnInit(): void {
-    var account: Account;
-    account = new Account();
-    account.id = "111";
-    account.logo = "JG";
-    account.name = "B";
-    account.description = "description";
-    account.releaseDate = "2001-01-01";
-    account.restructuringDate = "2001-01-01";
-    this.accounts.push(account);
-    account = new Account();
-    account.id = "111";
-    account.logo = "JG";
-    account.name = "BA";
-    account.description = "description";
-    account.releaseDate = "2001-01-01";
-    account.restructuringDate = "2001-01-01";
-    this.accounts.push(account);
-    account = new Account();
-    account.id = "111";
-    account.logo = "JG";
-    account.name = "BAN";
-    account.description = "description";
-    account.releaseDate = "2001-01-01";
-    account.restructuringDate = "2001-01-01";
-    this.accounts.push(account);
-    account = new Account();
-    account.id = "111";
-    account.logo = "JG";
-    account.name = "BANC";
-    account.description = "description";
-    account.releaseDate = "2001-01-01";
-    account.restructuringDate = "2001-01-01";
-    this.accounts.push(account);
-    account = new Account();
-    account.id = "111";
-    account.logo = "JG";
-    account.name = "BANCO";
-    account.description = "description";
-    account.releaseDate = "2001-01-01";
-    account.restructuringDate = "2001-01-01";
-    this.accounts.push(account);
-    account = new Account();
-    account.id = "111";
-    account.logo = "JG";
-    account.name = "BANCOJ";
-    account.description = "description";
-    account.releaseDate = "2001-01-01";
-    account.restructuringDate = "2001-01-01";
-    this.accounts.push(account);
-    account.id = "111";
-    account.logo = "JG";
-    account.name = "name";
-    account.description = "description";
-    account.releaseDate = "2001-01-01";
-    account.restructuringDate = "2001-01-01";
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
-    this.accounts.push(account);
+    var product: Product;
+    product = new Product();
+    product.id = "111";
+    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
+    product.name = "B";
+    product.description = "description";
+    product.releaseDate = "2001-01-01";
+    product.restructuringDate = "2001-01-01";
+    this.products.push(product);
+    product = new Product();
+    product.id = "111";
+    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
+    product.name = "BA";
+    product.description = "description";
+    product.releaseDate = "2001-01-01";
+    product.restructuringDate = "2001-01-01";
+    this.products.push(product);
+    product = new Product();
+    product.id = "111";
+    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
+    product.name = "BAN";
+    product.description = "description";
+    product.releaseDate = "2001-01-01";
+    product.restructuringDate = "2001-01-01";
+    this.products.push(product);
+    product = new Product();
+    product.id = "111";
+    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
+    product.name = "BANC";
+    product.description = "description";
+    product.releaseDate = "2001-01-01";
+    product.restructuringDate = "2001-01-01";
+    this.products.push(product);
+    product = new Product();
+    product.id = "111";
+    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
+    product.name = "BANCO";
+    product.description = "description";
+    product.releaseDate = "2001-01-01";
+    product.restructuringDate = "2001-01-01";
+    this.products.push(product);
+    product = new Product();
+    product.id = "111";
+    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
+    product.name = "BANCOJ";
+    product.description = "description";
+    product.releaseDate = "2001-01-01";
+    product.restructuringDate = "2001-01-01";
+    this.products.push(product);
+    product.id = "111";
+    product.logo = "https://www.visa.com.ec/dam/VCOM/regional/lac/SPA/Default/Pay%20With%20Visa/Tarjetas/visa-signature-400x225.jpg";
+    product.name = "name";
+    product.description = "description";
+    product.releaseDate = "2001-01-01";
+    product.restructuringDate = "2001-01-01";
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
+    this.products.push(product);
   }
 
-  modify(account: Account) {
-    this.accountService.account = account;
-    this.router.navigate([Paths.modifyAccount]);
+  modify(product: Product) {
+    this.productService.product = product;
+    this.router.navigate([Paths.productModify]);
   }
 
-  delete(account: Account) {
+  delete(product: Product) {
 
   }
 
-  getAccounts() {
-    this.accountsPage = this.accounts.filter(account => account.name.includes(this.search));
+  getproducts() {
+    this.productsPage = this.products.filter(product => product.name.includes(this.search));
     if (this.totalResults != 0) {
-      this.accountsPage = this.accountsPage.slice(0, this.totalResults);
+      this.productsPage = this.productsPage.slice(0, this.totalResults);
     }
-    if (this.accountsPage.length != this.accounts.length) {
-      return this.accountsPage;
+    if (this.productsPage.length != this.products.length) {
+      return this.productsPage;
     }
-    return this.accounts;
+    return this.products;
   }
 
   add() {
-    this.accountService.account = new Account();
-    this.router.navigate([Paths.accountCreate]);
+    this.productService.product = new Product();
+    this.router.navigate([Paths.productCreate]);
   }
 
 }

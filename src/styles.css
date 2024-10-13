@@ -446,3 +446,11 @@ textarea.form-control-lg {
 .table-group-divider {
   border-top: calc(var(--border-width) * 2) solid currentcolor
 }
+
+.table-bordered > :not(caption) > * {
+  border-width: var(--border-width) 0
+}
+
+.table-bordered > :not(caption) > * > * {
+  border-width: 0 var(--border-width)
+}

@@ -4,40 +4,40 @@
     <h1>Formulario de Registro</h1>
     <div class="linea"></div>
   </div>
-  <form (ngSubmit)="send()" [formGroup]="accountForm">
+  <form (ngSubmit)="send()" [formGroup]="productForm">
     <div class="row">
       <div class="col form-group">
         <label class="form-label" for="id">ID</label>
-        <input [(ngModel)]="account.id" [readOnly]="isModifyMode" class="form-control" formControlName="id" id="id"
+        <input [(ngModel)]="product.id" [readOnly]="isModifyMode" class="form-control" formControlName="id" id="id"
                maxlength="10" minlength="3"
                required type="text">
-        <div *ngIf="accountForm.get('id')!.invalid && accountForm.get('id')!.dirty || accountForm.get('id')!.touched"
+        <div *ngIf="productForm.get('id')!.invalid && productForm.get('id')!.dirty || productForm.get('id')!.touched"
              class="alert alert-danger">
-          <div *ngIf="accountForm.get('id')!.hasError('required')">
+          <div *ngIf="productForm.get('id')!.hasError('required')">
             ID no valido!
           </div>
-          <div *ngIf="accountForm.get('id')!.hasError('minlength')">
+          <div *ngIf="productForm.get('id')!.hasError('minlength')">
             ID mínimo 3 caracteres.
           </div>
-          <div *ngIf="accountForm.get('id')!.hasError('maxlength')">
+          <div *ngIf="productForm.get('id')!.hasError('maxlength')">
             ID máximo 10 caracteres.
           </div>
         </div>
       </div>
       <div class="col form-group">
         <label class="form-label" for="name">Nombre</label>
-        <input [(ngModel)]="account.name" class="form-control" formControlName="name" id="name" maxlength="100"
+        <input [(ngModel)]="product.name" class="form-control" formControlName="name" id="name" maxlength="100"
                minlength="5" required type="text">
         <div
-          *ngIf="accountForm.get('name')!.invalid && (accountForm.get('name')!.dirty || accountForm.get('name')!.touched)"
+          *ngIf="productForm.get('name')!.invalid && (productForm.get('name')!.dirty || productForm.get('name')!.touched)"
           class="alert alert-danger">
-          <div *ngIf="accountForm.get('name')!.hasError('required')">
+          <div *ngIf="productForm.get('name')!.hasError('required')">
             Este campo es requerido
           </div>
-          <div *ngIf="accountForm.get('name')!.hasError('minlength')">
+          <div *ngIf="productForm.get('name')!.hasError('minlength')">
             Nombre mínimo 5 caracteres.
           </div>
-          <div *ngIf="accountForm.get('name')!.hasError('maxlength')">
+          <div *ngIf="productForm.get('name')!.hasError('maxlength')">
             Nombre máximo 100 caracteres.
           </div>
         </div>
@@ -46,30 +46,30 @@
     <div class="row">
       <div class="col form-group">
         <label class="form-label" for="description">Descripción</label>
-        <input [(ngModel)]="account.description" class="form-control" formControlName="description" id="description"
+        <input [(ngModel)]="product.description" class="form-control" formControlName="description" id="description"
                maxlength="200" minlength="10"
                required type="text">
         <div
-          *ngIf="accountForm.get('description')!.invalid && (accountForm.get('description')!.dirty || accountForm.get('description')!.touched)"
+          *ngIf="productForm.get('description')!.invalid && (productForm.get('description')!.dirty || productForm.get('description')!.touched)"
           class="alert alert-danger">
-          <div *ngIf="accountForm.get('description')!.hasError('required')">
+          <div *ngIf="productForm.get('description')!.hasError('required')">
             Este campo es requerido
           </div>
-          <div *ngIf="accountForm.get('description')!.hasError('minlength')">
+          <div *ngIf="productForm.get('description')!.hasError('minlength')">
             Descripción mínimo 10 caracteres.
           </div>
-          <div *ngIf="accountForm.get('description')!.hasError('maxlength')">
+          <div *ngIf="productForm.get('description')!.hasError('maxlength')">
             Descripción máximo 200 caracteres.
           </div>
         </div>
       </div>
       <div class="col form-group">
         <label class="form-label" for="logo">Logo</label>
-        <input [(ngModel)]="account.logo" class="form-control" formControlName="logo" id="logo" required type="text">
+        <input [(ngModel)]="product.logo" class="form-control" formControlName="logo" id="logo" required type="text">
         <div
-          *ngIf="accountForm.get('logo')!.invalid && (accountForm.get('logo')!.dirty || accountForm.get('logo')!.touched)"
+          *ngIf="productForm.get('logo')!.invalid && (productForm.get('logo')!.dirty || productForm.get('logo')!.touched)"
           class="alert alert-danger">
-          <div *ngIf="accountForm.get('logo')!.hasError('required')">
+          <div *ngIf="productForm.get('logo')!.hasError('required')">
             Este campo es requerido
           </div>
         </div>
@@ -78,30 +78,30 @@
     <div class="row">
       <div class="col form-group">
         <label class="form-label" for="releaseDate">Fecha Liberación</label>
-        <input [(ngModel)]="account.releaseDate" class="form-control" formControlName="releaseDate" id="releaseDate"
+        <input [(ngModel)]="product.releaseDate" class="form-control" formControlName="releaseDate" id="releaseDate"
                required type="date">
         <div
-          *ngIf="accountForm.get('releaseDate')!.invalid && (accountForm.get('releaseDate')!.dirty || accountForm.get('releaseDate')!.touched)"
+          *ngIf="productForm.get('releaseDate')!.invalid && (productForm.get('releaseDate')!.dirty || productForm.get('releaseDate')!.touched)"
           class="alert alert-danger">
-          <div *ngIf="accountForm.get('releaseDate')!.hasError('required')">
+          <div *ngIf="productForm.get('releaseDate')!.hasError('required')">
             Este campo es requerido
           </div>
-          <div *ngIf="accountForm.get('releaseDate')?.hasError('releaseDateInvalid')">
+          <div *ngIf="productForm.get('releaseDate')?.hasError('releaseDateInvalid')">
             La fecha de lanzamiento debe ser igual o posterior a la fecha actual.
           </div>
         </div>
       </div>
       <div class="col form-group">
         <label class="form-label" for="restructuringDate">Fecha Revisión</label>
-        <input [(ngModel)]="account.restructuringDate" class="form-control" formControlName="restructuringDate"
+        <input [(ngModel)]="product.restructuringDate" class="form-control" formControlName="restructuringDate"
                id="restructuringDate" required type="date">
         <div
-          *ngIf="accountForm.get('restructuringDate')!.invalid && (accountForm.get('restructuringDate')!.dirty || accountForm.get('restructuringDate')!.touched)"
+          *ngIf="productForm.get('restructuringDate')!.invalid && (productForm.get('restructuringDate')!.dirty || productForm.get('restructuringDate')!.touched)"
           class="alert alert-danger">
-          <div *ngIf="accountForm.get('restructuringDate')!.hasError('required')">
+          <div *ngIf="productForm.get('restructuringDate')!.hasError('required')">
             Este campo es requerido
           </div>
-          <div *ngIf="accountForm.get('restructuringDate')?.hasError('restructuringDateInvalid')">
+          <div *ngIf="productForm.get('restructuringDate')?.hasError('restructuringDateInvalid')">
             Requerido, la Fecha debe ser exactamente un año posterior a la fecha de liberación
           </div>
         </div>
@@ -112,7 +112,7 @@
         <button (click)="reset()" class="button buttonReset" type="button">Reiniciar</button>
       </div>
       <div class="col">
-        <button [disabled]="!accountForm.valid" class="button buttonSend" type="submit">Enviar</button>
+        <button [disabled]="!productForm.valid" class="button buttonSend" type="submit">Enviar</button>
       </div>
     </div>
   </form>

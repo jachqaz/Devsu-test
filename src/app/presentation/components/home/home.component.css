@@ -32,4 +32,9 @@
   justify-content: space-between;
 }
 
+img {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+}
 
