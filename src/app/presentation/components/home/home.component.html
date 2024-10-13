@@ -19,35 +19,44 @@
       <th colspan="2">Acción</th>
     </tr>
     </thead>
-    <tbody *ngIf="products.length>0; else tableTemplate" class="table-group-divider">
-    <tr *ngFor="let product of getProducts()">
-      <td><img [src]="product.logo" alt="logo"></td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.description }}</td>
-      <td>{{ product.releaseDate }}</td>
-      <td>{{ product.restructuringDate }}</td>
-      <td>
-        <button (click)="modify(product)">
-          Modificar
-        </button>
-      </td>
-      <td>
-        <button (click)="delete(product)" class="delete-button">
-          Eliminar
-        </button>
+    <tbody class="tbodyLoading">
+    <tr>
+      <td colspan="6" style="text-align: -webkit-center;">
+        <div *ngIf="isLoading;else loadingTemplate" class="spinner-border" role="status"></div>
       </td>
     </tr>
     </tbody>
-    <ng-template #tableTemplate>
-      <tbody>
-      <tr>
-        <td colspan="6">
-          <h2>
-            No hay registros
-          </h2>
+    <ng-template #loadingTemplate>
+      <tbody *ngIf="products.length>0; else tableTemplate" class="table-group-divider tbodyLoaded">
+      <tr *ngFor="let product of getProducts()">
+        <td><img [src]="product.logo" alt="logo"></td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.releaseDate }}</td>
+        <td>{{ product.restructuringDate }}</td>
+        <td>
+          <button (click)="modify(product)">
+            Modificar
+          </button>
+        </td>
+        <td>
+          <button (click)="delete(product)" class="delete-button">
+            Eliminar
+          </button>
         </td>
       </tr>
       </tbody>
+      <ng-template #tableTemplate>
+        <tbody>
+        <tr>
+          <td colspan="6">
+            <h2>
+              No hay registros
+            </h2>
+          </td>
+        </tr>
+        </tbody>
+      </ng-template>
     </ng-template>
   </table>
 

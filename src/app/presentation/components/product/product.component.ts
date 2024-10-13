@@ -20,6 +20,7 @@ import {NgIf} from '@angular/common';
   styleUrl: './product.component.css'
 })
 export class ProductComponent implements OnInit {
+  isLoading = false;
   isModifyMode: boolean = false;
   product: Product = new Product();
   productForm: FormGroup = this.initFormGroup();
@@ -45,13 +46,14 @@ export class ProductComponent implements OnInit {
   }
 
   send() {
+    this.isLoading = true;
     if (this.isModifyMode) {
       this.productService.putProducts(this.product).then(() => {
         this.router.navigate([Paths.home])
       }).catch(error => {
         console.error(error)
-        alert(error.message);
-      });
+        alert("No se logro guardar el producto");
+      }).finally(() => this.isLoading = false);
     } else {
       this.productService.getIdVerification(this.product.id).then((value: boolean) => {
         if (value) {
@@ -61,13 +63,13 @@ export class ProductComponent implements OnInit {
             this.router.navigate([Paths.home])
           }).catch(error => {
             console.error(error)
-            alert(error.message);
-          });
+            alert("No se logro guardar el producto");
+          }).finally(() => this.isLoading = false);
         }
       }).catch(error => {
         console.error(error)
-        alert(error.message);
-      });
+        alert("No se logro verificar el ID");
+      }).finally(() => this.isLoading = false);
     }
   }
 

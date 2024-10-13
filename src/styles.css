@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border: 0.25rem solid #f3f3f3; /* Border color */
+  border-top-color: #3498db; /* Top border color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .button {
   font-weight: bold;
   border: none;

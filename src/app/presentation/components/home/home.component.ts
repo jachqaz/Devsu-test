@@ -23,6 +23,7 @@ import {DeleteModalComponent} from '../delete-modal/delete-modal.component';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+  isLoading = false;
   totalResults: number = 0;
   products: Product[] = [];
   productsPage: Product[] = [];
@@ -38,12 +39,13 @@ export class HomeComponent implements OnInit {
   }
 
   getProductsService() {
+    this.isLoading = true;
     this.productService.getProducts().then((products) => {
       this.products = products.data;
     }).catch(error => {
-      console.error(error)
-      alert(error.message);
-    });
+      console.error(error);
+      alert("No se logro consultar los productos");
+    }).finally(() => this.isLoading = false);
   }
 
   modify(product: Product) {
@@ -80,12 +82,13 @@ export class HomeComponent implements OnInit {
   }
 
   deleteEventModal() {
+    this.isLoading = true;
     this.closeModal();
     this.productService.deleteProducts(this.productSelected).then(() => {
       this.getProductsService();
     }).catch(error => {
       console.error(error)
-      alert(error.message);
-    });
+      alert("No se logro eliminar el producto");
+    }).finally(() => this.isLoading = false);
   }
 }

@@ -115,8 +115,12 @@
         <button (click)="reset()" class="button buttonReset" type="button">Reiniciar</button>
       </div>
       <div class="col">
-        <button [disabled]="!productForm.valid" class="button buttonSend" type="submit">Enviar</button>
+        <div *ngIf="isLoading;else loadingTemplate" class="spinner-border" role="status"></div>
+        <ng-template #loadingTemplate>
+          <button [disabled]="!productForm.valid" class="button buttonSend" type="submit">Enviar</button>
+        </ng-template>
       </div>
     </div>
   </form>
+
 </div>
