@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
   product: Product = new Product();
   productForm: FormGroup = this.initFormGroup();
 
-  constructor(private router: Router, private route: ActivatedRoute, private productService: ProductService) {
+  constructor(public router: Router, private route: ActivatedRoute, public productService: ProductService) {
     this.product = this.productService.product;
   }
 

@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   showModal: boolean = false;
   productSelected: Product = new Product();
 
-  constructor(private router: Router, private productService: ProductService) {
+  constructor(public router: Router, public productService: ProductService) {
   }
 
   ngOnInit(): void {
