@@ -1,0 +1,18 @@
+<div [ngClass]="{ 'show': visible }" class="modal">
+  <div class="modal-content textCenter">
+    <div class="modal-body">
+      <p>¿Estás seguro de eliminar el producto {{ product.name }}?</p>
+    </div>
+    <div class="linea"></div>
+    <div class="modal-footer">
+      <div class="row">
+        <div class="col">
+          <button (click)="close()" class="button buttonCancel">Cancelar</button>
+        </div>
+        <div class="col">
+          <button (click)="deleteProduct()" class="button buttonSuccess">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
